@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace MontanoP7
 {
-    class InventoryItem: IPortable
+    public class InventoryItem: GameObject,IPortable
     {
         public int Size { get; set; }
 
-        InventoryItem()
-        { 
+        public InventoryItem():base()
+        {
+            
         }
 
     }

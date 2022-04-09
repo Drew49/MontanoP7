@@ -60,6 +60,7 @@
     <Compile Include="InventoryItem.cs" />
     <Compile Include="IPortable.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="PortableHidingPlace.cs" />
     <Compile Include="TravelOption.cs" />
     <Page Include="TravelWindow.xaml">

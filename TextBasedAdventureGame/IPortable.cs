@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MontanoP7
 {
-    interface IPortable
+    public interface IPortable
     {
         int Size { get; set; }
     }

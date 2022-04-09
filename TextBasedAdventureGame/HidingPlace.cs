@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MontanoP7
 {
-    class HidingPlace: GameObject, IHidingPlace 
+    public class HidingPlace: GameObject, IHidingPlace 
     {
-        public GameObject hiddenObject;
+        private GameObject hiddenObject;
         public GameObject HiddenObject { get; set; }
 
         public HidingPlace()

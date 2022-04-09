@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MontanoP7
 {
-    interface IHidingPlace
+    public interface IHidingPlace
     {
         GameObject HiddenObject { get; set; }
 

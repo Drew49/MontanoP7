@@ -28,6 +28,8 @@ namespace MontanoP7
         /// Game object that has map
         /// </summary>
         Map game;
+        Player player;
+        
 
         /// <summary>
         /// Initialize the form, the game and call display location to start the form.
@@ -44,8 +46,8 @@ namespace MontanoP7
         /// </summary>
         private void DisplayLocation()
         {
-            txbLocationDescription.Text = game.PlayerLocation.Description;
-            lbTraveOptions.ItemsSource = game.PlayerLocation.TravelOptions;
+            txbLocationDescription.Text = game.Locations[0].Description;
+            lbTraveOptions.ItemsSource = game.Locations[0].TravelOptions;
         }
 
         /// <summary>
@@ -55,9 +57,9 @@ namespace MontanoP7
         /// <param name="e"></param>
         private void lbTraveOptions_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            TravelOption to = (TravelOption)lbTraveOptions.SelectedItem;
-            game.PlayerLocation = to.Location;
-            DisplayLocation();
+           TravelOption to = (TravelOption)lbTraveOptions.SelectedItem;
+            player = to.Location;
+            //DisplayLocation();
         }
     }
 }

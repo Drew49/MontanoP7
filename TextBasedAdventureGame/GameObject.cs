@@ -6,21 +6,23 @@ using System.Threading.Tasks;
 
 namespace MontanoP7
 {
-    class GameObject
+    public class GameObject
     {
         public string Desrciption { get; set; }
 
         public GameObject()
         {
+      
         }
 
         public GameObject(string description)
         {
-            Desrciption = description;
+            this.Desrciption = description;
         }
 
-        public void toString() 
-        { 
+        public string toString() 
+        {
+            return Desrciption;
         }
         
     }

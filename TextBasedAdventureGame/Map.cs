@@ -16,7 +16,7 @@ namespace MontanoP7
     /// Class that represents the game. 
     /// Has a map and location of player.
     /// </summary>
-    class Map
+    public class Map
     {
         /// <summary>
         /// List of map locations.
@@ -26,7 +26,7 @@ namespace MontanoP7
         /// <summary>
         /// Player's location.
         /// </summary>
-        public MapLocation PlayerLocation { get; set; }
+        
 
         /// <summary>
         /// Constructor that creates the game map.
@@ -42,6 +42,7 @@ namespace MontanoP7
             Locations.Add(new MapLocation("You are in a jail."));
             Locations.Add(new MapLocation("You are on a road in front of a general store."));
             Locations.Add(new MapLocation("You are in a general store."));
+            Locations.Add(new MapLocation("You are now behind the general store and see a bank"));
 
             //Now add travel options to each map location
 
@@ -70,9 +71,14 @@ namespace MontanoP7
 
             //Jail
             Locations[6].TravelOptions.Add(new TravelOption("The store door leads out to the street.", Locations[5]));
+            Locations[6].TravelOptions.Add(new TravelOption("The back door leads to an alley way", Locations[7]));
 
-            //Set the player's starting location.
-            PlayerLocation = Locations[0];
+            //Add items
+            Locations[0].Items.Add(new InventoryItem("Broken Rifle"));
+
+            HidingPlace rock = new HidingPlace("Large Rock");
+            
+           
         }
 
     }

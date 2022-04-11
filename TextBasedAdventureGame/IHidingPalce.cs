@@ -10,6 +10,6 @@ namespace MontanoP7
     {
         GameObject HiddenObject { get; set; }
 
-        void Search();
+        GameObject Search();
     }
 }

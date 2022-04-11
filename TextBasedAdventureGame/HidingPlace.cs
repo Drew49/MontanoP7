@@ -14,12 +14,12 @@ namespace MontanoP7
         public HidingPlace(string desc)
         {
             this.Description = desc;
-            this.hiddenObject = new GameObject(desc);
+            this.hiddenObject = null;
         }
 
-        public void Search()
+        public GameObject Search()
         {
-            HiddenObject = hiddenObject;
+            return hiddenObject;
         }
     }
 }

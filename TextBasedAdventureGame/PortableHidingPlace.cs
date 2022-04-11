@@ -21,9 +21,9 @@ namespace MontanoP7
             
         }
 
-        public void Search()
+        public GameObject Search()
         {
-            HiddenObject = item;
+            return HiddenObject;
         }
         
     }

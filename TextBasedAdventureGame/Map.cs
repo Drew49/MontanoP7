@@ -42,7 +42,9 @@ namespace MontanoP7
             Locations.Add(new MapLocation("You are in a jail."));
             Locations.Add(new MapLocation("You are on a road in front of a general store."));
             Locations.Add(new MapLocation("You are in a general store."));
-            Locations.Add(new MapLocation("You are now behind the general store and see a bank"));
+            Locations.Add(new MapLocation("You are now behind the general store and see a bank and the general store"));
+            Locations.Add(new MapLocation("You are in the bank"));
+            
 
             //Now add travel options to each map location
 
@@ -69,14 +71,43 @@ namespace MontanoP7
             Locations[5].TravelOptions.Add(new TravelOption("A road is to the east of you.", Locations[3]));
             Locations[5].TravelOptions.Add(new TravelOption("A general store is to the north of you.", Locations[6]));
 
-            //Jail
+            //General Store
             Locations[6].TravelOptions.Add(new TravelOption("The store door leads out to the street.", Locations[5]));
             Locations[6].TravelOptions.Add(new TravelOption("The back door leads to an alley way", Locations[7]));
 
+            //Ally way
+            Locations[7].TravelOptions.Add(new TravelOption("The bank is to the north", Locations[8]));
+            Locations[7].TravelOptions.Add(new TravelOption("The general store is to the south", Locations[6]));
+
+            //bank
+            Locations[8].TravelOptions.Add(new TravelOption("The back door leads to the road out of town", Locations[0]));
+
             //Add items
             Locations[0].Items.Add(new InventoryItem("Broken Rifle"));
+            Locations[1].Items.Add(new InventoryItem("Beer glass"));
+            Locations[2].Items.Add(new InventoryItem("Bar Stool"));
+            Locations[3].Items.Add(new InventoryItem("Get out of jail card"));
+            Locations[4].Items.Add(new InventoryItem("Hammer"));
+
 
             HidingPlace rock = new HidingPlace("Large Rock");
+            rock.HiddenObject = new InventoryItem("Ninja Star");
+            Locations[0].Items.Add(rock);
+
+            HidingPlace counter = new HidingPlace("Bar counter");
+            counter.HiddenObject = new InventoryItem("First aid kit");
+            Locations[2].Items.Add(counter);
+
+            HidingPlace jailCell = new HidingPlace("Jail cell");
+            jailCell.HiddenObject = new InventoryItem("Metal file");
+            Locations[4].Items.Add(jailCell);
+
+            HidingPlace cashReG = new HidingPlace("Cash register");
+            cashReG.HiddenObject = new InventoryItem("$100 in cash");
+            Locations[6].Items.Add(cashReG);
+
+            Locations[8].Items.Add(new PortableHidingPlace("Bank bag", 1, new InventoryItem("$20 in cash")));
+            Locations[5].Items.Add(new PortableHidingPlace("Saddle bag on a horse", 1, new InventoryItem("Sheriff's badge")));
             
            
         }

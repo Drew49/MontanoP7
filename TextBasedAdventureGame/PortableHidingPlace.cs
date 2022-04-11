@@ -8,9 +8,18 @@ namespace MontanoP7
 {
     public class PortableHidingPlace:GameObject, IHidingPlace, IPortable
     {
-        GameObject item;
+        public GameObject item;
         public GameObject HiddenObject { get; set; }
         public int Size { get; set; }
+
+        public PortableHidingPlace(string desc, int i, GameObject item)
+        {
+            this.Description = desc;
+            this.item = new GameObject(desc);
+            this.Size = Size;
+            this.HiddenObject = item;
+            
+        }
 
         public void Search()
         {

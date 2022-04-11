@@ -10,10 +10,20 @@ namespace MontanoP7
     {
         public int Size { get; set; }
 
-        public InventoryItem():base()
-        {
-            
+        public InventoryItem(string desc)       
+        {   
+            this.Description = desc;
+            this.Size = 1;
         }
+
+        public override string ToString()
+        {
+            return Description;
+        }
+
+       
+
+       
 
     }
 }

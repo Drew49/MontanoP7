@@ -8,7 +8,7 @@ namespace MontanoP7
 {
     public class GameObject
     {
-        public string Desrciption { get; set; }
+        public string Description { get; set; }
 
         public GameObject()
         {
@@ -17,12 +17,13 @@ namespace MontanoP7
 
         public GameObject(string description)
         {
-            this.Desrciption = description;
+            this.Description = description;
         }
 
-        public string toString() 
+
+        public override string ToString() 
         {
-            return Desrciption;
+            return Description;
         }
         
     }

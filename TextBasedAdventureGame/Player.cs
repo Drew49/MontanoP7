@@ -11,16 +11,21 @@ namespace MontanoP7
     {
         private int inventorySize;
 
-        List<IPortable> inventory { get; set; }
-        MapLocation Location { get; set; }
+        public List<IPortable> inventory { get; set; }
+        public MapLocation Location { get; set; }
         public int MaxInventory { get; set; }
+        Player ()
+        {
+            MaxInventory = 15;
+        }
 
-        Player(MapLocation location)
+        public Player(MapLocation location)
         {
             Location = location;
             inventory = new List<IPortable>();
             inventorySize = inventory.Count();
-            MaxInventory = 15;
+            MaxInventory = 5;
+            Calc();
             
         }
 
@@ -34,8 +39,19 @@ namespace MontanoP7
             }
         }
 
-        public void RemoveInventoryItem()
+        public void RemoveInventoryItem(IPortable item)
         {
+            inventory.Remove(item);
+        }
+
+        public void AddInventoryItem(IPortable item)
+        {
+
+            var it = new InventoryItem(item.ToString());
+            inventory.Add(it);
+            Calc();
+
+            
         }
 
     }

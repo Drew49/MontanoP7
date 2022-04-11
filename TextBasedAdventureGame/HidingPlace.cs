@@ -11,9 +11,10 @@ namespace MontanoP7
         private GameObject hiddenObject;
         public GameObject HiddenObject { get; set; }
 
-        public HidingPlace()
+        public HidingPlace(string desc)
         {
-            hiddenObject = null;
+            this.Description = desc;
+            this.hiddenObject = new GameObject(desc);
         }
 
         public void Search()

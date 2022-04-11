@@ -29,7 +29,9 @@ namespace MontanoP7
         /// </summary>
         Map game;
         Player player;
-        
+        private int playerMoves = 0;
+        List<string> status = new List<string>();
+
 
         /// <summary>
         /// Initialize the form, the game and call display location to start the form.
@@ -38,6 +40,7 @@ namespace MontanoP7
         {
             InitializeComponent();
             game = new Map();
+            player = new Player(game.Locations[0]);
             DisplayLocation();
         }
 
@@ -46,8 +49,10 @@ namespace MontanoP7
         /// </summary>
         private void DisplayLocation()
         {
-            txbLocationDescription.Text = game.Locations[0].Description;
-            lbTraveOptions.ItemsSource = game.Locations[0].TravelOptions;
+            txbLocationDescription.Text = player.Location.Description;
+            lbTraveOptions.ItemsSource = player.Location.TravelOptions;
+            lbItemSearch.ItemsSource = player.Location.Items;
+
         }
 
         /// <summary>
@@ -58,8 +63,43 @@ namespace MontanoP7
         private void lbTraveOptions_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
            TravelOption to = (TravelOption)lbTraveOptions.SelectedItem;
-            player = to.Location;
-            //DisplayLocation();
+            player.Location = to.Location;
+            playerMoves++;
+            status.Add("You travel to: " + to);
+            lbGameStatus.ItemsSource = status;
+            lbGameStatus.Items.Refresh();
+            DisplayLocation();
+        }
+
+        private void lbItemSearch_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
+
+        private void btnTake_Click(object sender, RoutedEventArgs e)
+        {
+            InventoryItem invI = (InventoryItem)lbItemSearch.SelectedItem;
+            player.AddInventoryItem(invI);
+            lbPlayerInventory.ItemsSource = player.inventory;
+            lbPlayerInventory.Items.Refresh();
+            status.Add("You added " + invI + " into your inventory");
+            lbGameStatus.ItemsSource = status;
+            lbGameStatus.Items.Refresh();
+            
+            
+            
+        }
+
+        private void btnDrop_Click(object sender, RoutedEventArgs e)
+        {
+            
+            InventoryItem invI = (InventoryItem)lbPlayerInventory.SelectedItem;
+            player.RemoveInventoryItem(invI);
+            lbPlayerInventory.ItemsSource = player.inventory;
+            lbPlayerInventory.Items.Refresh();
+            status.Add("You dropped " + invI + " from your inventory");
+            lbGameStatus.ItemsSource = status;
+            lbGameStatus.Items.Refresh();
         }
     }
 }

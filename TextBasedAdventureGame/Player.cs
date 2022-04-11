@@ -25,7 +25,7 @@ namespace MontanoP7
             inventory = new List<IPortable>();
             inventorySize = inventory.Count();
             MaxInventory = 5;
-            Calc();
+            
             
         }
 

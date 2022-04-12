@@ -78,7 +78,7 @@ namespace MontanoP7
         private void btnTake_Click(object sender, RoutedEventArgs e)
         {
             if (lbItemSearch.SelectedItem is InventoryItem)
-            {
+            { 
                 InventoryItem invI = (InventoryItem)lbItemSearch.SelectedItem;
                 player.AddInventoryItem(invI);
                 lbPlayerInventory.ItemsSource = player.inventory;
@@ -86,7 +86,7 @@ namespace MontanoP7
                 status.Add("You added " + invI + " into your inventory");
                 lbGameStatus.ItemsSource = status;
                 lbGameStatus.Items.Refresh();
-               
+                    
             }
             else if (lbItemSearch.SelectedItem is PortableHidingPlace)
             {

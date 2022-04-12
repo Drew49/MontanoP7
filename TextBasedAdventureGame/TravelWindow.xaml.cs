@@ -81,6 +81,8 @@ namespace MontanoP7
             { 
                 InventoryItem invI = (InventoryItem)lbItemSearch.SelectedItem;
                 player.AddInventoryItem(invI);
+                player.Location.Items.Remove(invI);
+                lbItemSearch.Items.Refresh();
                 lbPlayerInventory.ItemsSource = player.inventory;
                 lbPlayerInventory.Items.Refresh();
                 status.Add("You added " + invI + " into your inventory");
@@ -91,8 +93,11 @@ namespace MontanoP7
             else if (lbItemSearch.SelectedItem is PortableHidingPlace)
             {
                 PortableHidingPlace invI = (PortableHidingPlace)lbItemSearch.SelectedItem;
-                MessageBox.Show("This item can also be searched!");
+                MessageBox.Show("While taking this item " + invI.HiddenObject + " fell out!");
+                invI.Search();
                 player.AddInventoryItem(invI);
+                player.Location.Items.Remove(invI);
+                player.Location.Items.Add(invI.HiddenObject);
                 lbItemSearch.Items.Refresh();
                 lbPlayerInventory.ItemsSource = player.inventory;
                 lbPlayerInventory.Items.Refresh();
@@ -114,6 +119,8 @@ namespace MontanoP7
             
             InventoryItem invI = (InventoryItem)lbPlayerInventory.SelectedItem;
             player.RemoveInventoryItem(invI);
+            player.Location.Items.Add(invI);
+            lbItemSearch.Items.Refresh();
             lbPlayerInventory.ItemsSource = player.inventory;
             lbPlayerInventory.Items.Refresh();
             status.Add("You dropped " + invI + " from your inventory");
@@ -132,9 +139,11 @@ namespace MontanoP7
                 MessageBox.Show("This is a hiding place! You found " + invI.HiddenObject);
                 status.Add("You searched " + invI + " and found " + " a " + invI.HiddenObject);
                 player.Location.Items.Add(invI.HiddenObject);
+                player.Location.Items.Remove(invI);
                 lbItemSearch.Items.Refresh();
                 lbGameStatus.ItemsSource = status;
                 lbGameStatus.Items.Refresh();
+                
 
             }
             else if (lbItemSearch.SelectedItem is PortableHidingPlace)

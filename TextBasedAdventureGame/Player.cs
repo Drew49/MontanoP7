@@ -18,6 +18,7 @@ namespace MontanoP7
 
         private int maxInventory;
         public int MaxInventory { get { return maxInventory; } set { maxInventory = value; Calc(); } }
+
         Player ()
         {
             MaxInventory = 5;
@@ -35,12 +36,13 @@ namespace MontanoP7
 
         public void Calc()
         {
-            inventory.Capacity = maxInventory;
-            if (inventorySize> maxInventory )
-            {
-                MessageBox.Show("Need to drop and item if you" +
-                    " want this one");
-            }
+            //inventory.Capacity = maxInventory;
+            //if (inventory.Count> maxInventory )
+            //{
+             //   MessageBox.Show("Need to drop and item if you" +
+              //      " want this one");
+            //}
+            
             
         }
 
@@ -51,10 +53,15 @@ namespace MontanoP7
 
         public void AddInventoryItem(IPortable item)
         {
-
-            var it = new InventoryItem(item.ToString());
-            inventory.Add(it);
-            Calc();
+            if (inventory.Count < maxInventory)
+            {
+                var it = new InventoryItem(item.ToString());
+                inventory.Add(it);
+            }
+            else
+            {
+                MessageBox.Show("Need to drop an item to carry this one");
+            }
 
             
         }

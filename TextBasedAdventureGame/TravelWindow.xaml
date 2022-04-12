@@ -13,7 +13,7 @@
         <Label Content="Location Description:" HorizontalAlignment="Left" Margin="22,22,0,0" VerticalAlignment="Top" Height="26" Width="121"/>
         <Label Content="Select and item to search or take:" HorizontalAlignment="Left" Margin="33,107,0,0" VerticalAlignment="Top" Height="26" Width="186"/>
         <ListBox x:Name="lbItemSearch" HorizontalAlignment="Left" Height="100" Margin="33,138,0,0" VerticalAlignment="Top" Width="453" MouseDoubleClick="lbItemSearch_MouseDoubleClick" Grid.ColumnSpan="2"/>
-        <Button x:Name="btnSearch" Grid.Column="1" Content="Search" HorizontalAlignment="Left" Margin="223,138,0,0" VerticalAlignment="Top" Width="83" Height="20"/>
+        <Button x:Name="btnSearch" Grid.Column="1" Content="Search" HorizontalAlignment="Left" Margin="223,138,0,0" VerticalAlignment="Top" Width="83" Height="20" Click="btnSearch_Click"/>
         <Button x:Name="btnTake" Grid.Column="1" Content="Take --&gt;" HorizontalAlignment="Left" Margin="223,178,0,0" VerticalAlignment="Top" Width="83" RenderTransformOrigin="0.638,2.056" Height="20" Click="btnTake_Click"/>
         <Button x:Name="btnDrop" Grid.Column="1" Content="&lt;--Drop" HorizontalAlignment="Left" Margin="223,218,0,0" VerticalAlignment="Top" Width="83" RenderTransformOrigin="0.578,4.11" Height="20" Click="btnDrop_Click"/>
         <ListBox x:Name="lbPlayerInventory" HorizontalAlignment="Left" Height="273" Margin="350,138,0,0" VerticalAlignment="Top" Width="272" Grid.Column="1"/>

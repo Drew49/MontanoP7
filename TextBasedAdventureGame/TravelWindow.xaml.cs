@@ -29,7 +29,6 @@ namespace MontanoP7
         /// </summary>
         Map game;
         Player player;
-        private int playerMoves = 0;
         List<string> status = new List<string>();
 
 
@@ -64,27 +63,47 @@ namespace MontanoP7
         {
            TravelOption to = (TravelOption)lbTraveOptions.SelectedItem;
             player.Location = to.Location;
-            playerMoves++;
             status.Add("You travel to: " + to);
             lbGameStatus.ItemsSource = status;
             lbGameStatus.Items.Refresh();
             DisplayLocation();
+            
         }
 
         private void lbItemSearch_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            
+            MessageBox.Show("Select and option to the right!");
         }
 
         private void btnTake_Click(object sender, RoutedEventArgs e)
         {
-            InventoryItem invI = (InventoryItem)lbItemSearch.SelectedItem;
-            player.AddInventoryItem(invI);
-            lbPlayerInventory.ItemsSource = player.inventory;
-            lbPlayerInventory.Items.Refresh();
-            status.Add("You added " + invI + " into your inventory");
-            lbGameStatus.ItemsSource = status;
-            lbGameStatus.Items.Refresh();
+            if (lbItemSearch.SelectedItem is InventoryItem)
+            {
+                InventoryItem invI = (InventoryItem)lbItemSearch.SelectedItem;
+                player.AddInventoryItem(invI);
+                lbPlayerInventory.ItemsSource = player.inventory;
+                lbPlayerInventory.Items.Refresh();
+                status.Add("You added " + invI + " into your inventory");
+                lbGameStatus.ItemsSource = status;
+                lbGameStatus.Items.Refresh();
+               
+            }
+            else if (lbItemSearch.SelectedItem is PortableHidingPlace)
+            {
+                PortableHidingPlace invI = (PortableHidingPlace)lbItemSearch.SelectedItem;
+                MessageBox.Show("This item can also be searched!");
+                player.AddInventoryItem(invI);
+                lbItemSearch.Items.Refresh();
+                lbPlayerInventory.ItemsSource = player.inventory;
+                lbPlayerInventory.Items.Refresh();
+                status.Add("You added " + invI + " into your inventory");
+                lbGameStatus.ItemsSource = status;
+                lbGameStatus.Items.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("You can not take this item, it is a hiding place");
+            }
             
             
             
@@ -100,6 +119,41 @@ namespace MontanoP7
             status.Add("You dropped " + invI + " from your inventory");
             lbGameStatus.ItemsSource = status;
             lbGameStatus.Items.Refresh();
+        }
+
+        
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbItemSearch.SelectedItem is HidingPlace)
+            {
+                
+                HidingPlace invI = (HidingPlace)lbItemSearch.SelectedItem;
+                invI.Search();
+                MessageBox.Show("This is a hiding place! You found " + invI.HiddenObject);
+                status.Add("You searched " + invI + " and found " + " a " + invI.HiddenObject);
+                player.Location.Items.Add(invI.HiddenObject);
+                lbItemSearch.Items.Refresh();
+                lbGameStatus.ItemsSource = status;
+                lbGameStatus.Items.Refresh();
+
+            }
+            else if (lbItemSearch.SelectedItem is PortableHidingPlace)
+            {
+                
+                PortableHidingPlace invI = (PortableHidingPlace)lbItemSearch.SelectedItem;
+                invI.Search();
+                MessageBox.Show("You searched this item and found " + invI.HiddenObject + " you can also take the item!");
+                status.Add("You searched " + invI + " and found " + " a " + invI.HiddenObject);
+                player.Location.Items.Add(invI.HiddenObject);
+                lbItemSearch.Items.Refresh();
+                lbGameStatus.ItemsSource = status;
+                lbGameStatus.Items.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("This item can be put in you inventory");
+            }
+
         }
     }
 }

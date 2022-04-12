@@ -107,7 +107,7 @@ namespace MontanoP7
             Locations[6].Items.Add(cashReG);
 
             Locations[8].Items.Add(new PortableHidingPlace("Bank bag", 1, new InventoryItem("$20 in cash")));
-            Locations[5].Items.Add(new PortableHidingPlace("Saddle bag on a horse", 1, new InventoryItem("Sheriff's badge")));
+            Locations[5].Items.Add(new PortableHidingPlace("Saddle bag", 1, new InventoryItem("Sheriff's badge")));
             
            
         }

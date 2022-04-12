@@ -10,10 +10,14 @@ namespace MontanoP7
     public class Player
     {
         private int inventorySize;
+        public int InventorySize
+        { get { return inventorySize; } set { inventorySize = value; Calc(); } }
 
         public List<IPortable> inventory { get; set; }
         public MapLocation Location { get; set; }
-        public int MaxInventory { get; set; }
+
+        private int maxInventory;
+        public int MaxInventory { get { return maxInventory; } set { maxInventory = value; Calc(); } }
         Player ()
         {
             MaxInventory = 15;

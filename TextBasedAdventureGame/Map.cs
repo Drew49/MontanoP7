@@ -88,6 +88,10 @@ namespace MontanoP7
             Locations[2].Items.Add(new InventoryItem("Bar Stool"));
             Locations[3].Items.Add(new InventoryItem("Get out of jail card"));
             Locations[4].Items.Add(new InventoryItem("Hammer"));
+            Locations[5].Items.Add(new InventoryItem("Store key"));
+            Locations[6].Items.Add(new InventoryItem("Can of corn"));
+            Locations[7].Items.Add(new InventoryItem("Small marble"));
+            Locations[8].Items.Add(new InventoryItem("Bank ledger"));
 
 
             HidingPlace rock = new HidingPlace("Large Rock");
@@ -103,11 +107,13 @@ namespace MontanoP7
             Locations[4].Items.Add(jailCell);
 
             HidingPlace cashReG = new HidingPlace("Cash register");
-            cashReG.HiddenObject = new InventoryItem("$100 in cash");
+            cashReG.HiddenObject = new InventoryItem("$100 bill");
             Locations[6].Items.Add(cashReG);
 
-            Locations[8].Items.Add(new PortableHidingPlace("Bank bag", 1, new InventoryItem("$20 in cash")));
+            Locations[8].Items.Add(new PortableHidingPlace("Bank bag", 1, new InventoryItem("$20 bill")));
             Locations[5].Items.Add(new PortableHidingPlace("Saddle bag", 1, new InventoryItem("Sheriff's badge")));
+            Locations[7].Items.Add(new PortableHidingPlace("BackPack", 1, new InventoryItem("Bank vault key")));
+            Locations[8].Items.Add(new PortableHidingPlace("Suitcase", 1, new InventoryItem("Bar of solid gold")));
             
            
         }

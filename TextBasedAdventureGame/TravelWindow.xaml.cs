@@ -40,7 +40,10 @@ namespace MontanoP7
             InitializeComponent();
             game = new Map();
             player = new Player(game.Locations[0]);
+            player.MaxInventory = 9;
             DisplayLocation();
+            status.Add("You can carry a max inventory of " + player.MaxInventory.ToString());
+            lbGameStatus.ItemsSource = status;
         }
 
         /// <summary>
@@ -51,6 +54,7 @@ namespace MontanoP7
             txbLocationDescription.Text = player.Location.Description;
             lbTraveOptions.ItemsSource = player.Location.TravelOptions;
             lbItemSearch.ItemsSource = player.Location.Items;
+            
 
         }
 
@@ -117,15 +121,16 @@ namespace MontanoP7
         private void btnDrop_Click(object sender, RoutedEventArgs e)
         {
             
-            InventoryItem invI = (InventoryItem)lbPlayerInventory.SelectedItem;
-            player.RemoveInventoryItem(invI);
-            player.Location.Items.Add(invI);
-            lbItemSearch.Items.Refresh();
-            lbPlayerInventory.ItemsSource = player.inventory;
-            lbPlayerInventory.Items.Refresh();
-            status.Add("You dropped " + invI + " from your inventory");
-            lbGameStatus.ItemsSource = status;
-            lbGameStatus.Items.Refresh();
+                InventoryItem invI = (InventoryItem)lbPlayerInventory.SelectedItem;
+                player.RemoveInventoryItem(invI);
+                player.Location.Items.Add(invI);
+                lbItemSearch.Items.Refresh();
+                lbPlayerInventory.ItemsSource = player.inventory;
+                lbPlayerInventory.Items.Refresh();
+                status.Add("You dropped " + invI + " from your inventory");
+                lbGameStatus.ItemsSource = status;
+                lbGameStatus.Items.Refresh();
+           
         }
 
         
@@ -151,12 +156,16 @@ namespace MontanoP7
                 
                 PortableHidingPlace invI = (PortableHidingPlace)lbItemSearch.SelectedItem;
                 invI.Search();
-                MessageBox.Show("You searched this item and found " + invI.HiddenObject + " you can also take the item!");
-                status.Add("You searched " + invI + " and found " + " a " + invI.HiddenObject);
+                MessageBox.Show("You searched this item and placed in inventory, also you found " + invI.HiddenObject + " you can also take the item!");
+                status.Add("You searched and took " + invI + " and found " + " a " + invI.HiddenObject);
                 player.Location.Items.Add(invI.HiddenObject);
+                player.AddInventoryItem(invI);
+                player.Location.Items.Remove(invI);
                 lbItemSearch.Items.Refresh();
                 lbGameStatus.ItemsSource = status;
                 lbGameStatus.Items.Refresh();
+                lbPlayerInventory.ItemsSource = player.inventory;
+                lbPlayerInventory.Items.Refresh();
             }
             else
             {

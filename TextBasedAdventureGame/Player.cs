@@ -21,7 +21,7 @@ namespace MontanoP7
 
         Player ()
         {
-            MaxInventory = 5;
+            MaxInventory = 0;
         }
 
         public Player(MapLocation location)
@@ -29,7 +29,7 @@ namespace MontanoP7
             Location = location;
             inventory = new List<IPortable>();
             inventorySize = inventory.Count();
-            MaxInventory = 5;
+            MaxInventory = 0;
             
             
         }
